@@ -1,0 +1,8 @@
+.DS_Store
+
+*
+
+!nvim/
+!nvim/*
+!.gitignore
+

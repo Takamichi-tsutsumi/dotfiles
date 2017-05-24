@@ -1,0 +1,40 @@
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = ['neomru.vim', 'neoyank.vim']
+on_event = 'BufRead'
+hook_add = '''
+nmap <Leader>ut :<C-u>Denite filetype<CR>
+nmap <Leader>up :<C-u>Denite file_rec<CR>
+nmap <Leader>uj :<C-u>Denite line<CR>
+nmap <Leader>ug :<C-u>Denite grep<CR>
+nmap <Leader>u] :<C-u>DeniteCursorWord grep<CR>
+nmap <Leader>uu :<C-u>Denite file_mru<CR>
+nmap <Leader>uy :<C-u>Denite neoyank<CR>
+nmap <Leader>ur :<C-u>Denite -resume<CR>
+nmap <Leader>u; :<C-u>Denite -resume -immediately -select=+1<CR>
+nmap <Leader>u- :<C-u>Denite -resume -immediately -select=-1<CR>
+nmap <Leader>ud :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/dotfiles']}])<CR>
+'''
+
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+let g:deoplete#enable_at_startup=1
+'''
+
+[[plugins]]
+repo = 'racer-rust/vim-racer'
+on_ft = 'rust'
+
+[[plugins]]
+repo = 'sebastianmarkow/deoplete-rust'
+on_ft = 'rust'
+
+
