@@ -37,4 +37,8 @@ on_ft = 'rust'
 repo = 'sebastianmarkow/deoplete-rust'
 on_ft = 'rust'
 
+[[plugins]]
+repo = 'carlitux/deoplete-ternjs'
+build = 'npm install -g tern'
+on_ft = 'javascript'
 

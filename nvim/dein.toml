@@ -35,3 +35,11 @@ on_ft = 'go'
 [[plugins]]
 repo = 'justinmk/vim-dirvish'
 
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'mxw/vim-jsx'
+on_ft = 'javascript'
+

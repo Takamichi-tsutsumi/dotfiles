@@ -133,6 +133,14 @@ let g:deoplete#sources#rust#rust_source_path='/Users/uu107017/.rustup/toolchains
 let g:deoplete#sources#rust#disable_keymap=1
 let g:deoplete#sources#rust#documentation_max_height=12
 
+" JavaScript Setting
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'
+let g:tern#filetypes = [
+      \'jsx'
+      \]
+
+let g:jsx_ext_required = 0
 
 let g:lightline = {
       \ 'colorscheme': 'wombat',
