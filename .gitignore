@@ -4,6 +4,7 @@
 
 !nvim/
 !nvim/*
+!nvim/colors/dracula.vim
 !.gitignore
 !fish
 !fish/config.fish
