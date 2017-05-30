@@ -5,4 +5,6 @@
 !nvim/
 !nvim/*
 !.gitignore
+!fish
+!fish/config.fish
 
