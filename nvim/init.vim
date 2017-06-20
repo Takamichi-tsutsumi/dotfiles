@@ -4,6 +4,7 @@ let g:deoplete#complete_method = 'complete'
 let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
+tnoremap <silent> <ESC> <C-\><C-n>
 
 "dein Scripts-----------------------------
 if &compatible
