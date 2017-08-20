@@ -84,6 +84,7 @@ set whichwrap=b,s,[,],<,>
 set backspace=indent,eol,start
 set wildmenu
 set scrolloff=3
+set ambiwidth=double
 
 set mouse=a
 
@@ -111,10 +112,21 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" NERD shortcut
+let NERDTreeShowHidden=1
+map <C-n> :NERDTreeToggle<CR>
+nnoremap st :<C-u>tabnew<CR>
+nnoremap sn gt
+nnoremap sp gT
+
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
 nnoremap ss :split<CR>
 nnoremap sv :vsplit<CR>
 
@@ -140,6 +152,7 @@ let g:tern_show_signature_in_pum = '0'
 let g:tern#filetypes = [
       \'jsx'
       \]
+autocmd CompleteDone * pclose
 
 let g:jsx_ext_required = 0
 
@@ -167,3 +180,4 @@ call submode#map('bufmove', 'n', '', '>', '<C-w>>')
 call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+
