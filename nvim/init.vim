@@ -92,6 +92,7 @@ set updatetime=250
 
 set cursorline
 hi clear CursorLine
+set noshowmode
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 let $NVIM_TUI_ENABLE_CURSOR_COLOR = 1
@@ -117,7 +118,7 @@ let NERDTreeShowHidden=1
 map <C-n> :NERDTreeToggle<CR>
 nnoremap st :<C-u>tabnew<CR>
 nnoremap sn gt
-nnoremap sp gT
+nnoremap sb gT
 
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
@@ -157,12 +158,21 @@ autocmd CompleteDone * pclose
 let g:jsx_ext_required = 0
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'Dracula',
       \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'filename', 'modified' ], [ 'readonly' ], [ 'buflist' ] ]
+      \   'left': [ [ 'mode', 'paste' ], [ 'filename', 'modified', 'readonly' ], [ 'ale' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'gitbranch', 'filetype' ] ]
       \ },
+      \ 'component_function': {
+      \   'ale': 'ALEStatus',
+      \   'gitbranch': 'fugitive#head'
+      \  }
       \ }
+
+function! ALEStatus()
+  return ALEGetStatusLine()
+endfunction
 
 " NERDCommenter settings
 let g:NERDSpaceDelims = 1
@@ -180,4 +190,27 @@ call submode#map('bufmove', 'n', '', '>', '<C-w>>')
 call submode#map('bufmove', 'n', '', '<', '<C-w><')
 call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
+
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+let g:flow#autoclose = 1
+
+let g:ale_linters = {
+      \ 'javascript': ['eslint'],
+      \ 'javascript.jsx': ['eslint'],
+      \}
+
+let g:ale_fixers = {
+      \ 'javascript': ['prettier_eslint'],
+      \ 'javascript.jsx': ['prettier_eslint', 'prettier']
+      \}
+
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_javascript_prettier_eslint_executable = 'prettier-eslint'
+let g:ale_fix_on_save = 1
 

@@ -24,9 +24,17 @@ set TERM xterm-color
 
 alias g='git'
 alias vim='nvim'
+alias vi='nvim'
 alias v='nvim'
 alias ls='exa'
 alias tmux='tmux -2'
+alias clr='clear'
+alias ghq-root='cd (ghq root)'
+alias ghq-dev='cd (ghq root)/github.com/Takamichi-tsutsumi'
+
+# function galabco
+#   g co master; g pull origin master; g co -b feature/AIRLAB-($argv)
+# end
 
 if status --is-login
   source $HOME/.config/fish/login.fish

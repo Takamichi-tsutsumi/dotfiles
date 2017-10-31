@@ -21,6 +21,11 @@ nmap <Leader>u; :<C-u>Denite -resume -immediately -select=+1<CR>
 nmap <Leader>u- :<C-u>Denite -resume -immediately -select=-1<CR>
 nmap <Leader>ud :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/dotfiles']}])<CR>
 '''
+hook_post_source = '''
+call denite#custom#map('insert', "<C-t>", '<denite:do_action:tabopen>')
+call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
+call denite#custom#map('insert', "<C-s>", '<denite:do_action:split>')
+'''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -42,3 +47,6 @@ repo = 'carlitux/deoplete-ternjs'
 build = 'npm install -g tern'
 on_ft = 'javascript'
 
+[[plugins]]
+repo='wokalski/autocomplete-flow'
+on_ft = 'javascript'
