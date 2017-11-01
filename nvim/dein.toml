@@ -38,24 +38,27 @@ on_ft = 'go'
 [[plugins]]
 repo = 'justinmk/vim-dirvish'
 
-# [[plugins]]
-# repo = 'pangloss/vim-javascript'
-# on_ft = ['javascript', 'javascript.jsx']
-# hook_source = '''
-# let g:javascript_plugin_flow = 1
-# '''
-#
 [[plugins]]
-repo = 'othree/yajs.vim'
-on_ft = [ 'javascript', 'javascript.jsx' ]
-
-[[plugins]]
-repo = 'othree/es.next.syntax.vim'
-on_ft = [ 'javascript', 'javascript.jsx' ]
+repo = 'pangloss/vim-javascript'
+on_ft = ['javascript', 'javascript.jsx']
+hook_source = '''
+let g:javascript_plugin_flow = 1
+'''
 
 # [[plugins]]
-# repo = 'MaxMEllon/vim-jsx-pretty'
+# repo = 'othree/yajs.vim'
 # on_ft = [ 'javascript', 'javascript.jsx' ]
+#
+# [[plugins]]
+# repo = 'othree/es.next.syntax.vim'
+# on_ft = [ 'javascript', 'javascript.jsx' ]
+
+[[plugins]]
+repo = 'MaxMEllon/vim-jsx-pretty'
+on_ft = [ 'javascript', 'javascript.jsx' ]
+# hook_source = '''
+# let g:vim_jsx_pretty_colorful_config = 1
+# '''
 
 
 # [[plugins]]
