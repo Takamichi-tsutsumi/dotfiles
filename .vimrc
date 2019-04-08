@@ -5,7 +5,9 @@ nnoremap <Leader>q :q<CR>
 tnoremap <silent> <ESC> <C-\><C-n>
 
 syntax on
-colors peachpuff
+if !has('gui_running')
+  set t_Co=256
+endif
 
 set encoding=utf-8
 set fileencoding=utf-8
@@ -45,6 +47,7 @@ set ambiwidth=double
 set mouse=a
 
 set updatetime=250
+set laststatus=2
 
 set cursorline
 hi clear CursorLine
@@ -56,8 +59,6 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-
-set statusline=%n\:%y%F\ \|%{(&fenc!=''?&fenc:&enc).'\|'.&ff.'\|'}%m%r%=
 
 nnoremap s <Nop>
 nnoremap sj <C-w>j
@@ -82,3 +83,24 @@ nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
+
+call plug#begin('~/.vim/plugins')
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-fugitive'
+call plug#end()
+
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ 'mode_map': { 'c': 'NORMAL' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'filename', 'modified', 'readonly' ], [ 'ale' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'gitbranch', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \  }
+      \ }
+
+nnoremap <C-n> :Vexplore<CR>
