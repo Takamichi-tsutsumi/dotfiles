@@ -95,6 +95,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
+Plug 'rust-lang/rust.vim' 
 call plug#end()
 
 let g:lightline = {
@@ -110,3 +111,5 @@ let g:lightline = {
       \ }
 
 nnoremap <C-n> :Vexplore<CR>
+
+let g:rustfmt_autosave = 1
