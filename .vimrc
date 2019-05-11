@@ -5,6 +5,7 @@ nnoremap <Leader>q :q<CR>
 tnoremap <silent> <ESC> <C-\><C-n>
 
 syntax on
+colorscheme dracula
 if !has('gui_running')
   set t_Co=256
 endif
@@ -91,6 +92,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugins')
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
