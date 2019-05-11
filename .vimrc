@@ -96,6 +96,7 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'rust-lang/rust.vim' 
+Plug 'scrooloose/nerdtree'
 call plug#end()
 
 let g:lightline = {
@@ -110,17 +111,10 @@ let g:lightline = {
       \  }
       \ }
 
-nnoremap <C-n> :Vexplore<CR>
-
 let g:rustfmt_autosave = 1
+let g:NERDTreeShowBookmarks=1
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-n> :NERDTreeToggle<CR>
 
-let g:netrw_banner = 0
-let g:netrw_browse_split = 1
-let g:netrw_winsize = 25
-let g:netrw_liststyle = 3
-let g:netrw_altv = 1
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
 
