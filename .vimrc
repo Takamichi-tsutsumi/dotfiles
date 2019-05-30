@@ -5,7 +5,6 @@ nnoremap <Leader>q :q<CR>
 tnoremap <silent> <ESC> <C-\><C-n>
 
 syntax on
-colorscheme dracula
 if !has('gui_running')
   set t_Co=256
 endif
@@ -93,6 +92,7 @@ endif
 
 call plug#begin('~/.vim/plugins')
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'whatyouhide/vim-gotham', { 'as': 'gotham' }
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
@@ -103,6 +103,7 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'scrooloose/syntastic'
 call plug#end()
 
 let g:lightline = {
@@ -131,4 +132,15 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
 endif
+
+colorscheme dracula
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
