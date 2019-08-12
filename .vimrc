@@ -108,10 +108,21 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'rust-lang/rust.vim' 
 Plug 'scrooloose/nerdtree'
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
+
+" Setting colors
+colorscheme nord
+let g:nord_bold_vertical_split_line = 1
+let g:nord_uniform_status_lines = 1
+let g:nord_cursor_line_number_background = 1
+let g:nord_italic = 1
+let g:nord_underline = 1
+let g:nord_italic_comments = 1
+
 let g:lightline = {
-      \ 'colorscheme': 'seoul256',
+      \ 'colorscheme': 'nord',
       \ 'mode_map': { 'c': 'NORMAL' },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'filename', 'modified', 'readonly' ], [ 'ale' ] ],
@@ -137,4 +148,3 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \})
 endif
-
