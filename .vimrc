@@ -11,7 +11,6 @@ endif
 
 set encoding=utf-8
 set fileencoding=utf-8
-
 set number
 set title
 set expandtab
@@ -52,8 +51,18 @@ set laststatus=2
 set cursorline
 hi clear CursorLine
 set noshowmode
-let &t_SI = "\e]50;CursorShape=1\x7"
-let &t_EI = "\e]50;CursorShape=0\x7"
+
+"let &t_SI = "\e]50;CursorShape=1\x7"
+"let &t_EI = "\e]50;CursorShape=0\x7"
+
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+else
+    let &t_SI = "\e[5 q"
+    let &t_EI = "\e[2 q"
+endif
+
 
 nnoremap j gj
 nnoremap k gk
@@ -99,11 +108,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
 Plug 'rust-lang/rust.vim' 
 Plug 'scrooloose/nerdtree'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'scrooloose/syntastic'
 call plug#end()
 
 let g:lightline = {
@@ -118,7 +122,8 @@ let g:lightline = {
       \  }
       \ }
 
-let g:rustfmt_autosave = 1
+let g:rustfmt_autosave = 0
+let g:rust_fold = 0
 let g:NERDTreeShowBookmarks=1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -130,17 +135,6 @@ if executable('rls')
         \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
         \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
         \ 'whitelist': ['rust'],
-        \ })
+        \})
 endif
-
-colorscheme dracula
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
