@@ -100,17 +100,16 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugins')
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'whatyouhide/vim-gotham', { 'as': 'gotham' }
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
-Plug 'rust-lang/rust.vim' 
 Plug 'scrooloose/nerdtree'
 Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
+" disable Auto pair center line when enter
+let g:AutoPairsCenterLine = 0
 
 " Setting colors
 colorscheme nord
@@ -133,18 +132,4 @@ let g:lightline = {
       \  }
       \ }
 
-let g:rustfmt_autosave = 0
-let g:rust_fold = 0
 let g:NERDTreeShowBookmarks=1
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <C-n> :NERDTreeToggle<CR>
-
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-        \ 'whitelist': ['rust'],
-        \})
-endif
