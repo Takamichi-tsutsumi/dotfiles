@@ -9,6 +9,12 @@ alias ghq-root='cd (ghq root)'
 alias ghq-dev='cd (ghq root)/github.com/tkmct'
 alias cat='bat'
 
+if not functions -q fisher
+    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+    fish -c fisher
+end
+
 function fish_user_key_bindings
   bind \cr peco_select_history
   bind \cg 'cd (ghq root)/(ghq list | peco --layout=bottom-up)'
