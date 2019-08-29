@@ -48,8 +48,6 @@ set mouse=a
 set updatetime=250
 set laststatus=2
 
-set cursorline
-hi clear CursorLine
 set noshowmode
 
 "let &t_SI = "\e]50;CursorShape=1\x7"
